@@ -1,0 +1,690 @@
+@font-face {
+    font-family: 'BOOWIE Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('BOOWIE Regular'), url('BOOWIE.woff') format('woff');
+    }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+:root {
+    --praesision-font-size: calc(4vw + 4vh);
+    --praesision-font-size-responsive: calc(3.5vw + 3.5vh);
+    --golden-ratio: 1.618;
+    --webas-font-size: calc(var(--praesision-font-size) / var(--golden-ratio));
+    --kopf-font-size: calc(var(--webas-font-size) / (var(--golden-ratio) * 1.8));
+    --royale-blue: #4169e1;
+    
+}
+@media (max-width: 768px) {
+    :root {
+        --praesision-font-size: calc(3.5vw + 3.5vh);
+    }
+}
+html{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    height: 100%;
+}
+#header-placeholder {
+    height: 8vh; 
+    display: none;
+    width: 100%;
+}
+
+
+/* Header */
+
+
+header {
+    background-color: #ffffff;
+    padding: 4vh 20px 0vh 20px;
+    z-index: 999;
+    position: relative; /* Ändern Sie dies zu 'relative' */
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    width: 100%;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    background-color: #ffffff;
+    transition: opacity 0.5s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    padding-bottom: 2rem;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
+    
+}
+
+  
+  #myHeader {
+    transition: box-shadow 0.5s, opacity 0.5s;
+}
+
+
+.sticky-visible {
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
+    opacity: 1; 
+}
+
+
+
+.main-nav {
+    text-align: center;
+}
+
+.main-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+}
+
+.main-nav li {
+    margin: 0 4.5vh;
+}
+
+.main-nav a {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1em;
+    text-decoration: none;
+    color: #000000;
+    padding-bottom: 3px;
+}
+
+
+.main-nav a {
+    position: relative;
+}
+
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 3px;
+    width: 0;
+    background-color: #000000;
+    transition: width 0.3s;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+/**/
+.no-scroll {
+    overflow: hidden;
+    height: 100%; /* Dies verhindert das Scrollen auf einigen mobilen Geräten */
+}
+
+/*Hamburger Header*/
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+  }
+
+.close-icon {
+    display: none;
+  }
+
+.menu.active .close-icon {
+    display: block;
+}
+  
+.menu-icon.hidden {
+    display: none;
+}
+  
+@media screen and (max-width: 950px) {
+    .menu-icon-raised {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    
+    .menu-icon {
+      display: block;
+      position: absolute;
+      right: 5%;
+      
+    }
+  
+    .menu {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #ffffff;
+        z-index: 999;
+        text-align: left;
+        padding-top: 60px;
+        opacity: 0;
+        transition: opacity 0.5s;
+        pointer-events: none; /* Fügen Sie diese Zeile hinzu */
+    }
+      
+    .menu.active {
+        opacity: 1 !important;
+        pointer-events: auto;
+
+    }
+      
+    .menu ul {
+      flex-direction: column;
+      align-items: left;
+      justify-content: left;
+      padding-left: 3rem;
+      margin: 0;
+      padding-top: 4rem;
+
+    }
+  
+    .menu li {
+      margin: 3px 0;
+      position: relative;
+    }
+    .menu li:not(:last-child)::after {
+        content: "";
+        display: block;
+        height: 1px;
+
+        margin: 10px 0;
+    }
+    .menu a {
+      color: black;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: calc(var(--kopf-font-size) * 2);
+    }
+    .main-nav li:last-child a{
+        all: unset;
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-size: calc(var(--kopf-font-size) * 2);
+        text-transform: uppercase;
+        color: black;
+        padding-bottom: 3px;
+    }
+    /* .main-nav li:last-child a:hover {
+        Letze element der Li im Menu Activ
+      } */
+}
+  
+.material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 48
+}
+
+.black.material-symbols-outlined {
+    color: #000; /* Schwarz */
+}
+  
+  .material-symbols-outlined {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    font-size: 2.5;
+}
+.material-symbols-outlinedone{
+    color: black;
+}
+.material-symbols-outlined:hover{
+    scale: 1.2;
+    transition: .5s;
+}
+.close-icon {
+position: absolute;
+top: 25px;
+right: 25px;
+font-size: 24px;
+cursor: pointer;
+display: none;
+}
+
+
+
+
+.banner1{
+    min-height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    align-items: stretch;
+    padding: 3rem 50px; 
+    position: relative;
+}
+
+.banner1 img {
+    display: block;
+    max-width: 40%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.banner1 h1 {
+    font-size: 2.6em;
+    margin-bottom: 20px; 
+    text-align: left;
+    color: #482a21;
+    font-family: "BOOWIE Regular";
+}
+.tc{
+    width: 100%; 
+    text-align: center;
+}
+.banner1 h2 {
+    font-size: 1.5em;
+    text-align: left;
+    color: #000000;
+}
+
+.banner1 p {
+    font-size: 1.5em;
+    text-align: left;
+    color: #000000;
+}
+.banner1 a{
+    color: #482a21;
+}
+.banner1 a:hover{
+    color: #000000;
+}
+.description a{
+    color: #482a21;
+}
+.description a:hover{
+    color: #000000;
+}
+@media (max-width: 1200px) {
+    .banner1 {
+        flex-direction: column;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .banner1 h1 {
+        font-size: 3em;
+
+        text-align: center;
+    }
+
+    .banner3 h1 {
+        font-size: 3em;
+
+        text-align: center;
+    }
+
+
+    .banner1 h3 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        line-height: 1.7;
+        color: #482a21; 
+    }
+    .banner1 p {
+        font-size: 1.3em;
+    }
+    .banner3 p {
+        font-size: 1.3em;
+        
+    }
+    .banner1 img {
+        max-width: 50%;
+    }
+    .tc{
+        all: unset;
+    }
+}
+
+@media (max-width: 600px) {
+    .banner1 h1 {
+        font-size: 1.7rem;
+        padding: 2rem 0rem;
+        text-align: center;
+    }
+    .banner3 h1 {
+        font-size: 2.4rem !important;
+        padding: 2rem 0rem;
+        text-align: center;
+
+    }
+    .banner1 img {
+        max-width: 70%;
+    }
+    .banner1 h2 {
+        font-size: 1rem;
+ 
+    }
+}
+@media (max-width: 400px) {
+    .banner3 h1 {
+        font-size: 9vw !important;
+    
+        padding: 2rem 1rem !important;
+        text-align: center;
+
+    }
+}
+@media (max-width: 768px) {
+    .banner1 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text-containerA {
+        width: 100%;
+        max-width: none !important; 
+    }
+
+    .text-containerA h1, .text-containerA p {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .banner1 img {
+        max-width: 100%;
+    }
+}
+
+
+.banner3{
+    min-height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 3rem 50px; 
+    position: relative;
+    overflow: hidden;
+}
+
+.banner3 h1 {
+    font-size: 2.6em;
+    margin-bottom: 20px; 
+    text-align: left;
+    color: #482a21;
+    font-family: "Montserrat";
+    text-align: center;
+}
+.banner3 p {
+    font-size: 1.5em;
+    text-align: left;
+    color: #482a21;
+}
+.parallax-section2 {
+    height: 40vh;
+    overflow: hidden;
+    position: relative;
+
+    width: 100vw;
+}
+
+.parallax-image2 {
+    background-image: url('Couch.webp');
+    height: 40vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+
+
+
+/*ScrollSection*/
+
+
+.test {
+    min-height: 10vh;
+    background-color: #ffffff;
+    border:  #ffffff solid 1px;
+    
+    display: flex; /* Hinzugefügt */
+    align-items: center; /* Hinzugefügt */
+    justify-content: center; /* Hinzugefügt */
+    overflow:visible; /* Hinzugefügt */
+
+}
+
+.test h1 {
+    font-family: "Montserat";
+    margin-top: 3rem;
+    text-align: center;
+    /* padding: 4rem 2rem 2rem 2rem; */
+    font-size: 2.7em;
+    color: #321d17;
+    box-sizing: border-box;
+
+}
+.test p{
+    width: 70%;
+    text-align: center;
+    margin: 2rem auto;
+    box-sizing: border-box;
+}
+
+.containtertest{
+    padding: 0rem;
+    background-color: #ffffff;
+    width: 100%; /* Hinzugefügt */
+    display: flex; /* Hinzugefügt */
+    justify-content: center; /* Hinzugefügt */
+    align-items: center; /* Hinzugefügt */
+}
+.sticky_parent{
+    height: 300vh;
+
+}
+.stickytest{
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+
+}
+.scroll_section{
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 300vw;
+    will-change: transform;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+}
+.stickytest .scroll_section .img-container:first-child {
+    margin-top: 0;
+}
+
+
+img{
+    width: 600px;
+    height: 60%;
+    object-fit: cover;
+    object-position: center;
+
+
+}
+.img-container .icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px; /* Die Höhe des Containers anpassen */
+}
+.img-container {
+    position: relative;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    padding: 1rem;
+    font-family: 'Raleway', sans-serif;
+}
+
+.img-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-family: 'Raleway', sans-serif;
+    
+}
+.img-container .icon {
+    position: absolute;
+    top: 0; /* Das Icon über dem Text platzieren */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30; /* Höher als der Paragraph */
+    width: 100px; /* Oder die gewünschte Breite */
+    height: auto; /* Damit das Bildverhältnis beibehalten wird */
+    /* Hinzufügen einer Hintergrundfarbe nur zu Testzwecken */
+   
+}
+
+.img-container p {
+    position: relative;
+    z-index: 20;
+    /* ...weitere Stile... */
+}
+.img-container p {
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.3em;
+    height: 60%; /* New */
+    overflow: auto; /* New */
+    padding: 1rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Fügt einen Schatten hinzu */
+    border-radius: 8px; /* Rundet die Ecken ab */
+    background-color: #f1f1f1; /* Hintergrundfarbe */
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media (max-width: 768px) {
+    img {
+        width: 400px; /* Verkleinern Sie die Bildbreite */
+        height: 40%;  /* Verkleinern Sie die Bildhöhe */
+    }
+
+    .scroll_section {
+        padding: 0 0vw; /* Erhöhen Sie den seitlichen Abstand */
+
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .test h1{
+        font-size: 3em;
+        text-align: center;
+    }
+}
+@media (max-width: 600px) {
+    .test h1{
+        font-size: 10vw !important; 
+    }
+}
+
+@media (max-width: 450px) {
+  .test h1{
+    font-size: 8vw !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/*Footer*/
+footer{
+    background-color: #c8c8c8;
+}
+.container1 {
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 15px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    padding-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+.footer-links ul li a {
+    color: inherit;
+    text-decoration: none;
+}
+.footer-links a:hover {
+    color: #524946;
+    transition: .5s;
+}
+.social-links a {
+    font-size: 24px;
+    margin: 0 20px;
+    color: inherit;
+    transition: all 0.5s ease;
+
+}
+
+.social-links :hover {
+    scale: 1.3;
+    transition: .5s;
+}
+.social-links h4:hover{
+    scale: 1;
+}
+
+.social-links {
+        margin-bottom: 30px;
+    }
+@media (min-width: 768px) {
+    .footer-links ul {
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    
+}
